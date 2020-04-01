@@ -26,8 +26,47 @@ class BotConnector {
     }
 
     async getData(schema){
-        return await this.request({
+        var data = await this.request({
             body: schema
         });
+        var parsed = JSON.parse(data);
+        
+        if(parsed.warning) console.warn(parsed.warning);
+        if(parsed.error) console.error(parsed.error);
+
+        return parsed.data;
+    }
+
+
+    async all(){
+        return await this.getData(`
+        {
+            info {
+                repository,
+                status,
+                version {
+                    string,
+                    major,
+                    minor,
+                    patch,
+                    channel
+                }
+            }
+            commands {
+                name,
+                group,
+                description,
+                aliases,
+                usage,
+                arguments {
+                    type,
+                    prompt,
+                    default,
+                    key,
+                    infinite
+                }
+            }
+        }
+        `);
     }
 }
