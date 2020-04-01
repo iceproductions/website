@@ -32,7 +32,6 @@
 [1200px - 1800px]: Normal styles apply
 [1800px+]: Tablet portrait
 
-ORDER: base + typography > general layout + grid > page layout > components
 */
 
 $phone: 600px;
@@ -43,12 +42,22 @@ $big-desktop: 1800px;
 @mixin respond($breakpoint) {
     @if $breakpoint == $big-desktop {
         @media (min-width: $breakpoint/16px * 1em) {
-            @content
+            @content;
         }
     } 
     @else {
         @media (max-width: $breakpoint/16px * 1em) {
-            @content
+            @content;
         }
     }
+}
+
+//Should probably use https://autoprefixer.github.io/ instead of this
+
+@mixin prefix($property, $value) {
+    -webkit-#{$property}: #{$value};
+    -moz-#{$property}: #{$value};
+    -ms-#{$property}: #{$value};
+    -o-#{$property}: #{$value};
+    #{$property}: #{$value};
 }

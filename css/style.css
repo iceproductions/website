@@ -309,7 +309,56 @@ template {
 [1200px - 1800px]: Normal styles apply
 [1800px+]: Tablet portrait
 
-ORDER: base + typography > general layout + grid > page layout > components
+*/
+/* SAMPLE BLUE PALLETTES
+
+https://mycolor.space/
+Based on: #008CFF
+
+Generic gradient
+
+#008CFF
+#00B2FF
+#00D0EE
+#00E5BA
+#8EF388
+#F9F871
+
+
+Matching gradient
+
+#008CFF
+#667AE9
+#8769D0
+#9A58B4
+#A24998
+#A33C7C
+
+
+Skip gradient
+
+#008CFF
+#71FACA
+#2CC194
+#008A61
+
+
+Skip shade gradient
+
+#008CFF
+#00BBFF
+#00DEED
+#71FACA
+
+
+Shades
+
+#008CFF
+#006FDD
+#0054BC
+#003A9C
+#00237E
+
 */
 *,
 *::before,
@@ -381,7 +430,7 @@ h2 {
 }*/
 a {
   text-decoration: none;
-  color: #2998ff; }
+  color: #1e90ff; }
   a:visited {
     color: #5643fa; }
 
@@ -443,10 +492,10 @@ a {
     background-color: #fff; }
 
 .btn--blue {
-  background-color: #2998ff;
+  background-color: #1e90ff;
   color: #fff; }
   .btn--blue::after {
-    background-color: #2998ff; }
+    background-color: #1e90ff; }
 
 .btn::after {
   content: "";
@@ -462,15 +511,15 @@ a {
 
 .btn-text:link, .btn-text:visited {
   display: inline-block;
-  color: #2998ff;
+  color: #1e90ff;
   font-size: 1.8rem;
   text-decoration: none;
-  border-bottom: 1px solid #2998ff;
+  border-bottom: 1px solid #1e90ff;
   padding: 3px;
   transition: all .2s; }
 
 .btn-text:hover {
-  background-color: #2998ff;
+  background-color: #1e90ff;
   color: #fff;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
   transform: translateY(-2px); }
