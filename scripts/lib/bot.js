@@ -26,13 +26,13 @@ class BotConnector {
     }
 
     async getData(schema){
-        var data = await this.request({
-            body: schema
+        var parsed = await this.request({
+            body: schema,
+            longType: "application/graphql"
         });
-        var parsed = JSON.parse(data);
         
-        if(parsed.warning) console.warn(parsed.warning);
-        if(parsed.error) console.error(parsed.error);
+        if(parsed.warnings) console.warn(parsed.warnings);
+        if(parsed.errors) console.error(parsed.errors);
 
         return parsed.data;
     }
