@@ -1,0 +1,41 @@
+//FONTS
+@font-face {font-family:"Simplifica";font-style:normal;font-weight:400;font-display:fallback;src: url("fonts/SIMPLIFICA.ttf") format("truetype");}
+
+@font-face {font-family:"Source Sans Pro";font-weight: 400;font-style: normal;font-display:fallback;src:url("fonts/Source Sans Pro/SourceSansPro-Regular.ttf") format("truetype");}
+
+
+body {
+    font-family: Source Sans Pro, sans-serif;
+    line-height: 1.7;
+    color: $color-grey-dark-3;
+    font-size: $default-font-size;
+}
+
+h1,
+h2,
+h3 {
+    font-family: Simplifica;
+    line-height: 1.2;
+    @include gradientText;
+}
+
+h1 {
+    letter-spacing: .5rem;
+}
+
+h2 {
+    letter-spacing: .2rem;
+}
+
+/*ul {
+    list-style: none;
+}*/
+
+a {
+    text-decoration: none;
+    color: $color-blue;
+
+    &:visited {
+        color: $color-purple;
+    }
+}

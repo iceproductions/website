@@ -1,0 +1,54 @@
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+@mixin absCenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin gradientText {
+    color: transparent;
+    text-transform: uppercase;
+    backface-visibility: hidden;
+    background-image: linear-gradient(to right, $color-green-light, $color-green-dark);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+
+//MEDIA QUERIES
+
+/* 
+[0px - 600px]: Phone
+[600px - 900px]: Tablet portrait
+[900px - 1200px]: Tablet portrait
+[1200px - 1800px]: Normal styles apply
+[1800px+]: Tablet portrait
+
+ORDER: base + typography > general layout + grid > page layout > components
+*/
+
+$phone: 600px;
+$tablet-portrait: 900px;
+$tablet-landscape: 1200px;
+$big-desktop: 1800px;
+
+@mixin respond($breakpoint) {
+    @if $breakpoint == $big-desktop {
+        @media (min-width: $breakpoint/16px * 1em) {
+            @content
+        }
+    } 
+    @else {
+        @media (max-width: $breakpoint/16px * 1em) {
+            @content
+        }
+    }
+}
