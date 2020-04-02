@@ -400,6 +400,7 @@ html {
       font-size: 75%; } }
 
 body {
+  min-height: 100vh;
   box-sizing: border-box;
   background-color: #fff; }
   @media (max-width: 56.25em) {
@@ -561,12 +562,15 @@ a:visited {
   .footer__content {
     width: 100%; }
 
+header {
+  position: sticky;
+  top: 0; }
+
 header nav {
   display: flex;
-  position: sticky;
   align-items: center;
   background: white;
-  padding: 1.5rem 6rem; }
+  padding: 1.5rem 4rem; }
   header nav svg {
     width: 6rem;
     height: 6rem; }
