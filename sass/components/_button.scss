@@ -69,17 +69,12 @@
 .btn-text {
     &:link, &:visited {
         display: inline-block;
-        color: $color-blue;
-        font-size: $default-font-size;
-        text-decoration: none;
-        border-bottom: 1px solid $color-blue;
         padding: 3px;
-        transition: all .2s;
+        transition: all .5s;
     }
 
     &:hover {
-        background-color: $color-blue;
-        color: $color-white;
+        color: $theme-blue;
         box-shadow: 0 1rem 2rem rgba($color-black,.15);
         transform: translateY(-2px);
     }

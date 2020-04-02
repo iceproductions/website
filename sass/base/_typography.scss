@@ -20,22 +20,22 @@ h3 {
 }
 
 h1 {
+    font-size: 4.5rem;
     letter-spacing: .5rem;
 }
 
 h2 {
+    font-size: 3.5rem;
     letter-spacing: .2rem;
 }
 
-/*ul {
-    list-style: none;
-}*/
+ul {
+    padding-left: 2rem;
+    list-style-image: url("../../img/logo-blue.svg");
+}
 
-a {
+a,
+a:visited {
+    color: inherit;
     text-decoration: none;
-    color: $color-blue;
-
-    &:visited {
-        color: $color-purple;
-    }
 }

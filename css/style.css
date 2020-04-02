@@ -310,13 +310,21 @@ template {
 [1800px+]: Tablet portrait
 
 */
-/* SAMPLE BLUE PALLETTES
-
+/* 
 https://mycolor.space/
+
+
+SAMPLE BLUE PALLETTES
 Based on: #008CFF
 
-Generic gradient
+Shades
+#008CFF
+#006FDD
+#0054BC
+#003A9C
+#00237E
 
+Generic gradient
 #008CFF
 #00B2FF
 #00D0EE
@@ -324,9 +332,7 @@ Generic gradient
 #8EF388
 #F9F871
 
-
 Matching gradient
-
 #008CFF
 #667AE9
 #8769D0
@@ -334,30 +340,44 @@ Matching gradient
 #A24998
 #A33C7C
 
-
-Skip gradient
-
-#008CFF
-#71FACA
-#2CC194
-#008A61
-
-
 Skip shade gradient
-
 #008CFF
 #00BBFF
 #00DEED
 #71FACA
 
 
-Shades
+SAMPLE GREEN PALLETTES
+Based on: #7ED56F
 
-#008CFF
-#006FDD
-#0054BC
-#003A9C
-#00237E
+Shades
+#7ED56F
+#52AA47
+#23801F
+#005800
+#003200
+
+Generic Gradient
+#7ED56F
+#34BC84
+#00A08E
+#00828A
+#176477
+#2F4858
+
+Matching Gradient
+#7ED56F
+#00C488
+#00B0A1
+#009AB2
+#0081B5
+#0067AA
+
+Skip Shade Gradient
+#7ED56F
+#BBD766
+#EDD76F
+#FFD786
 
 */
 *,
@@ -381,7 +401,6 @@ html {
 
 body {
   box-sizing: border-box;
-  padding: 3rem;
   background-color: #fff; }
   @media (max-width: 56.25em) {
     body {
@@ -415,24 +434,26 @@ h3 {
   color: transparent;
   text-transform: uppercase;
   backface-visibility: hidden;
-  background-image: linear-gradient(to right, #7ed56f, #28b485);
+  background-image: linear-gradient(to right, #008CFF, #0054BC);
   -webkit-background-clip: text;
   background-clip: text; }
 
 h1 {
+  font-size: 4.5rem;
   letter-spacing: .5rem; }
 
 h2 {
+  font-size: 3.5rem;
   letter-spacing: .2rem; }
 
-/*ul {
-    list-style: none;
-}*/
-a {
-  text-decoration: none;
-  color: #1e90ff; }
-  a:visited {
-    color: #5643fa; }
+ul {
+  padding-left: 2rem;
+  list-style-image: url("../../img/logo-blue.svg"); }
+
+a,
+a:visited {
+  color: inherit;
+  text-decoration: none; }
 
 .u-center-text {
   text-align: center !important; }
@@ -511,16 +532,11 @@ a {
 
 .btn-text:link, .btn-text:visited {
   display: inline-block;
-  color: #1e90ff;
-  font-size: 1.8rem;
-  text-decoration: none;
-  border-bottom: 1px solid #1e90ff;
   padding: 3px;
-  transition: all .2s; }
+  transition: all .5s; }
 
 .btn-text:hover {
-  background-color: #1e90ff;
-  color: #fff;
+  color: #006FDD;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
   transform: translateY(-2px); }
 
@@ -542,5 +558,31 @@ a {
   .footer__content {
     width: 100%; }
 
+header nav {
+  display: flex;
+  position: sticky;
+  align-items: center;
+  background: white;
+  padding: 1.5rem 6rem; }
+  header nav svg {
+    width: 6rem;
+    height: 6rem; }
+    header nav svg .inner {
+      fill: #008CFF; }
+    header nav svg .middle {
+      fill: #006FDD; }
+    header nav svg .outer {
+      fill: #0054BC; }
+  header nav ul {
+    margin-left: auto;
+    list-style: none;
+    text-align: right; }
+    header nav ul li {
+      display: inline-block;
+      font-size: 2rem; }
+      header nav ul li:not(:last-child) {
+        margin-right: 1rem; }
+
 main {
-  margin: 4rem auto; }
+  padding: 6rem;
+  padding-left: 12rem; }

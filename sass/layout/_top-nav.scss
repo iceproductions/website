@@ -1,0 +1,40 @@
+header nav {    
+    display: flex;
+    position: sticky;
+    align-items: center;
+    background: white;
+    padding: 1.5rem 6rem;
+
+    svg {
+        width: 6rem;
+        height: 6rem;
+        
+        .inner {
+            fill: $theme-blue-light;
+        }
+
+        .middle {
+            fill: $theme-blue;
+        }
+
+        .outer {
+            fill: $theme-blue-dark;
+        }
+    }
+
+    ul {
+        margin-left: auto;
+        list-style: none;
+        text-align: right;
+
+        li {
+            display: inline-block;
+            font-size: 2rem;
+
+            &:not(:last-child) {
+                margin-right: 1rem;
+            }
+        }
+    }
+
+}
