@@ -487,7 +487,8 @@ a:visited {
   position: relative;
   text-transform: uppercase;
   text-decoration: none;
-  padding: 1.5rem 4rem;
+  padding: 1rem 3rem;
+  letter-spacing: .3rem;
   border-radius: 10rem;
   transition: all .2s;
   font-size: 1.8rem;
@@ -506,17 +507,19 @@ a:visited {
   transform: translateY(-1px) scale(0.99);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
 
-.btn--white {
+.btn--white:link, .btn--white:visited {
   background-color: #fff;
   color: #777; }
-  .btn--white::after {
-    background-color: #fff; }
 
-.btn--blue {
-  background-color: #1e90ff;
+.btn--white::after {
+  background-color: #fff; }
+
+.btn--blue:link, .btn--blue:visited {
+  background-color: #008CFF;
   color: #fff; }
-  .btn--blue::after {
-    background-color: #1e90ff; }
+
+.btn--blue::after {
+  background-color: #008CFF; }
 
 .btn::after {
   content: "";
