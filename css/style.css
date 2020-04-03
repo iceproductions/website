@@ -447,14 +447,6 @@ h2 {
   font-size: 3.5rem;
   letter-spacing: .2rem; }
 
-ul {
-  list-style: none; }
-
-ul li::before {
-  content: "\2022";
-  color: #008CFF;
-  margin: 0 1rem 0 2rem; }
-
 a,
 a:visited {
   color: inherit;
@@ -486,6 +478,13 @@ a:visited {
 
 .u-margin-top-large {
   margin-top: 6rem !important; }
+
+ul.u-blue-bullets {
+  list-style: none; }
+  ul.u-blue-bullets li::before {
+    content: "\2022";
+    color: #008CFF;
+    margin: 0 1rem 0 2rem; }
 
 .btn, .btn:link, .btn:visited {
   display: inline-block;
