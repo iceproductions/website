@@ -1,11 +1,20 @@
 header {
     position: sticky;
     top: 0;
+    z-index: 10;
+
+    @include respond($phone) {
+        position: fixed;
+        top: 100vh;
+        transform: translateY(-90%);
+        width: 100%;
+    }
 }
 
 header nav {    
     display: flex;
     align-items: center;
+    justify-content: space-between;
     background: white;
     padding: 1.5rem 4rem;
 
@@ -27,18 +36,40 @@ header nav {
     }
 
     ul {
-        margin-left: auto;
+        display: flex;
         list-style: none;
         text-align: right;
 
         li {
-            display: inline-block;
             font-size: 2rem;
+        }
 
-            &:not(:last-child) {
-                margin-right: 1rem;
-            }
+        span {
+            margin: 0 2rem;
         }
     }
 
+    @include respond($phone) {
+
+        svg {
+            display: none;
+        }
+
+        ul {
+            width: 100%;
+            justify-content: space-around;
+        }
+    }
+
+    @include respond(400px) {
+        padding: 1.5rem 2rem;
+
+        ul {
+            justify-content: space-between;
+        }
+
+        span {
+            display: none;
+        }
+    }
 }

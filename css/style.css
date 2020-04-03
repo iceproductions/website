@@ -403,9 +403,6 @@ body {
   min-height: 100vh;
   box-sizing: border-box;
   background-color: #fff; }
-  @media (max-width: 56.25em) {
-    body {
-      padding: 0; } }
 
 @font-face {
   font-family: "Simplifica";
@@ -492,10 +489,10 @@ ul.u-blue-bullets {
   text-transform: uppercase;
   text-decoration: none;
   padding: 1rem 3rem;
-  letter-spacing: .3rem;
+  letter-spacing: .1rem;
   border-radius: 10rem;
   transition: all .2s;
-  font-size: 1.8rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
   border: none;
   cursor: pointer; }
 
@@ -538,7 +535,6 @@ ul.u-blue-bullets {
   transition: all .4s; }
 
 .btn-text:link, .btn-text:visited {
-  display: inline-block;
   padding: 3px;
   transition: all .5s; }
 
@@ -567,11 +563,19 @@ ul.u-blue-bullets {
 
 header {
   position: sticky;
-  top: 0; }
+  top: 0;
+  z-index: 10; }
+  @media (max-width: 37.5em) {
+    header {
+      position: fixed;
+      top: 100vh;
+      transform: translateY(-90%);
+      width: 100%; } }
 
 header nav {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background: white;
   padding: 1.5rem 4rem; }
   header nav svg {
@@ -584,15 +588,33 @@ header nav {
     header nav svg .outer {
       fill: #0054BC; }
   header nav ul {
-    margin-left: auto;
+    display: flex;
     list-style: none;
     text-align: right; }
     header nav ul li {
-      display: inline-block;
       font-size: 2rem; }
-      header nav ul li:not(:last-child) {
-        margin-right: 1rem; }
+    header nav ul span {
+      margin: 0 2rem; }
+  @media (max-width: 37.5em) {
+    header nav svg {
+      display: none; }
+    header nav ul {
+      width: 100%;
+      justify-content: space-around; } }
+  @media (max-width: 25em) {
+    header nav {
+      padding: 1.5rem 2rem; }
+      header nav ul {
+        justify-content: space-between; }
+      header nav span {
+        display: none; } }
 
 main {
   padding: 6rem;
   padding-left: 12rem; }
+  @media (max-width: 37.5em) {
+    main {
+      padding: 4rem 6rem; } }
+  @media (max-width: 25em) {
+    main {
+      padding: 3rem 4rem; } }

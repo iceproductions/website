@@ -7,11 +7,11 @@
         text-transform: uppercase;
         text-decoration: none;
         padding: 1rem 3rem;
-        letter-spacing: .3rem;
+        letter-spacing: .1rem;
         //font-weight: bold;
         border-radius: 10rem;
         transition: all .2s;
-        font-size: $default-font-size;
+        box-shadow: 0 .5rem 1rem rgba($color-black,.2);
 
         //For the <button> element
         border: none;
@@ -76,7 +76,6 @@
 
 .btn-text {
     &:link, &:visited {
-        display: inline-block;
         padding: 3px;
         transition: all .5s;
     }
