@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "npm run watch:sass",
     "build": "npm run compile:sass",
-    "compile:sass": "node-sass sass css -r",
-    "watch:sass": "node-sass sass css -rw"
+    "compile:sass": "node-sass sass -o css -r",
+    "watch:sass": "node-sass sass -o css -r -w"
   },
   "author": "",
   "license": "ISC",
