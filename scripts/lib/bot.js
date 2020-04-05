@@ -1,5 +1,7 @@
 class BotConnector {
-    base = "https://api.iceproductions.dev/v1";
+    constructor() {
+        this.base = "https://api.iceproductions.dev/v1";
+    }
 
     request({
         method = "POST",
