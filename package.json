@@ -1,10 +1,13 @@
 {
-  "name": "ice",
+  "name": "ice-web",
   "version": "1.0.0",
   "description": "Website for Ice Productions",
   "main": "index.js",
   "scripts": {
-    "compile:sass": "node-sass sass/main.scss css/style.css -w"
+    "dev": "npm run watch:sass",
+    "build": "npm run compile:sass",
+    "compile:sass": "node-sass sass css -r",
+    "watch:sass": "node-sass sass css -rw"
   },
   "author": "",
   "license": "ISC",
