@@ -77,7 +77,10 @@
 .btn-text {
     &:link, &:visited {
         padding: 3px;
+        padding-left: 10px;
+        padding-right: 10px;
         transition: all .5s;
+        border-radius: 5px;
     }
 
     &:hover {

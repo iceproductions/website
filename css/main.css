@@ -536,9 +536,10 @@ ul.u-blue-bullets {
 
 .btn-text:link, .btn-text:visited {
   padding: 3px;
-  padding-left: 6px;
-  padding-right: 6px;
-  transition: all .4s; }
+  padding-left: 10px;
+  padding-right: 10px;
+  transition: all .5s;
+  border-radius: 5px; }
 
 .btn-text:hover {
   color: #006FDD;
