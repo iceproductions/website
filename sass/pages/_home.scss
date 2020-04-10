@@ -11,6 +11,24 @@ main {
     }
 }
 
-section.about {
-    //styles go here
+section.commands {
+    padding: 5rem 0;
+    table {
+        overflow: hidden;
+        border-collapse: collapse;
+        border-radius: 10px;
+        box-shadow:0 0 40px 0 rgba($color-black, .15);
+        th {
+            text-align: left;
+            font-weight: bold;
+            color: $color-white;
+            background-color: $theme-blue-light;
+        }
+        th, td {
+            padding: 1rem;
+        }
+        tr:nth-child(even) {
+            background-color: rgba($theme-blue-light, .05);
+        }
+    }
 }

@@ -16,6 +16,7 @@ h2,
 h3 {
     font-family: Simplifica;
     line-height: 1.2;
+    padding-left: 1px;
     @include gradientText;
 }
 

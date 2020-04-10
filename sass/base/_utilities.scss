@@ -27,6 +27,5 @@ ul.u-blue-bullets {
     li::before {
         content: "\2022";
         color: $theme-blue-light;
-        margin: 0 1rem 0 2rem;
     }
 }
