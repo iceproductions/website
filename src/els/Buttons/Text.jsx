@@ -6,7 +6,7 @@ export default function Text({ children, element, ...args}) {
         Element = "button";
     }
     return (
-        <Element class="btn-text" {...args}>
+        <Element className="btn-text" {...args}>
             {children}
         </Element>
     );

@@ -3,7 +3,7 @@ import React from 'react';
 export default function BulletList(props) {
     if(props.container) {
         return (
-            <ul class="u-blue-bullets">
+            <ul className="u-blue-bullets">
                 {props.children}
             </ul>
         );

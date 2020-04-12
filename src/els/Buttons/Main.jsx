@@ -6,7 +6,7 @@ export default function Main({ children, element, ...args}) {
         Element = "button";
     }
     return (
-        <Element class="btn btn--blue" {...args}>
+        <Element className="btn btn--blue" {...args}>
             {children}
         </Element>
     );

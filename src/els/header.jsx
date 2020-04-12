@@ -8,11 +8,11 @@ export default function Header() {
             <nav>
                 <img src={logo} alt="Logo" />
                 <ul>
-                    <li><a href="#link" class="btn-text">Home</a></li>
+                    <li><a href="#link" className="btn-text">Home</a></li>
                     <span>|</span>
-                    <li><a href="#link" class="btn-text">Bot</a></li>
+                    <li><a href="#link" className="btn-text">Bot</a></li>
                     <span>|</span>
-                    <li><a href="#link" class="btn-text">Contact us</a></li>
+                    <li><a href="#link" className="btn-text">Contact us</a></li>
                 </ul>
             </nav>
         </header>
