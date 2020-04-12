@@ -1,4 +1,5 @@
 import React from 'react';
+import Paypal from '../scripts/paypal';
 
 import {
     MainTitle,
@@ -15,7 +16,7 @@ import {
 export default function IndexPage() {
     return (
         <main>
-            <section class="about">
+            <section className="about">
                 <MainTitle>Ice productions</MainTitle>
                 <p>We are independent team working on tools to help developers all over the world.</p>
                 <SubTitle>Our creations</SubTitle>
