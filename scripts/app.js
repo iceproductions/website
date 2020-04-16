@@ -1,5 +1,6 @@
-const data = new BotConnector;
-data.commands().then(json => {
+(async () => {
+    const data = new BotConnector;
+    const json = await data.commands();
     const table = document.getElementById("commands");
     json.commands.forEach(cmd => {
         table.innerHTML += `
@@ -10,4 +11,4 @@ data.commands().then(json => {
             </tr>
         `;
     });
-});
+})();
