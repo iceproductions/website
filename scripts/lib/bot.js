@@ -29,7 +29,7 @@ class BotConnector {
 
     async getData(schema){
         var parsed = await this.request({
-            body: JSON.encode({ query: schema }),
+            body: JSON.stringify({ query: schema }),
             longType: "application/json"
         });
         
