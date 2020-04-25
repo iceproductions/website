@@ -29,8 +29,8 @@ class BotConnector {
 
     async getData(schema){
         var parsed = await this.request({
-            body: schema,
-            longType: "application/graphql"
+            body: JSON.encode({ query: schema }),
+            longType: "application/json"
         });
         
         if(parsed.warnings) console.warn(parsed.warnings);
