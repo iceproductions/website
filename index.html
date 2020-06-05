@@ -1,58 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#2998ff">
-        <meta name="description" content="Official website for Ice Productions, an independent team making tools for developers all over the world.">
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-93897496-5"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
 
-          gtag('config', 'UA-93897496-5');
-        </script>
-        <!-- Stylesheets -->
-        <link rel="stylesheet" href="css/main.css" type="text/css">
-        <link rel="stylesheet" href="css/reset.css" type="text/css">
-        <!-- Scripts -->
-        <title>Aztec</title>
-    </head>
-    <body>
-     <main>
-      <nav id="desktop-nav">
-       <ul>
-         <li id="nav-item-logo"></li>
-         <li class="nav-item-d">Features</li>
-         <li class="nav-item-d">Commands</li>
-         <li class="nav-item-d">Documentation</li>
-         <li class="nav-item-d">Premium</li>
-         <li class="nav-item-d">Contact</li>
-         <li id="seperator"></li>
-         <li class="nav-item-d"><button id="login-d">login with discord</button></li>
-       </ul>
-      </nav>
-      
-      <nav id="mobile-nav">
-       <li class="nav-item-m">Features</li>
-       <li class="nav-item-m">Commands</li>
-       <li class="nav-item-m">Documentation</li>
-       <li class="nav-item-m">Premium</li>
-       <li class="nav-item-m">Contact</li>
-      </nav>
-      
-      
-      
-      
-      
-     </main>
-        
-        
-        
-       <script src="scripts/lib/bot.js"></script>
-       <script src="scripts/global.js"></script>
-       <script src="scripts/app.js"></script>
-    </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+  <meta name="theme-color"
+        content="#2998ff">
+  <meta name="description"
+        content="Official website for Ice Productions, an independent team making tools for developers all over the world.">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async
+          src="https://www.googletagmanager.com/gtag/js?id=UA-93897496-5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-93897496-5');
+  </script>
+  <!-- Stylesheets -->
+  <link rel="stylesheet"
+        href="css/main.css"
+        type="text/css">
+  <link rel="stylesheet"
+        href="css/reset.css"
+        type="text/css">
+  <link rel="stylesheet"
+        href="css/mediaqueries.css"
+        type="text/css">
+  <!-- Scripts -->
+  <script defer
+          src="scripts/lib/bot.js"></script>
+  <script defer
+          src="scripts/global.js"></script>
+  <script defer
+          src="scripts/app.js"></script>
+  <title>Aztec</title>
+</head>
+
+<body>
+  <nav id="desktop-nav">
+    <ul>
+      <li id="nav-item-logo"></li>
+      <li class="nav-item-d">Features</li>
+      <li class="nav-item-d">Commands</li>
+      <li class="nav-item-d">Documentation</li>
+      <li class="nav-item-d">Premium</li>
+      <li class="nav-item-d">Contact</li>
+      <li id="seperator"></li>
+      <li class="nav-item-d"><button id="login-d">login with discord</button></li>
+    </ul>
+  </nav>
+
+  <nav id="mobile-nav">
+    <div class="mobile-nav__header">
+      <svg id="hamburger-icon"
+           class="hamburger-icon"
+           data-name="hamburger-icon"
+           xmlns="http://www.w3.org/2000/svg"
+           viewBox="0 0 44 44"
+           width="44"
+           height="44"
+           fill="#fff">
+        <title>Hamburger button</title>
+        <rect id="hamburger-icon__top"
+              y="8"
+              x="6"
+              width="32"
+              height="4" />
+        <rect id="hamburger-icon__center"
+              y="20"
+              x="6"
+              width="32"
+              height="4" />
+        <rect id="hamburger-icon__bottom"
+              y="32"
+              x="6"
+              width="32"
+              height="4" />
+      </svg>
+      <button id="login-d">login with discord</button>
+    </div>
+
+    <ul id="nav-menu"
+        class="mobile-nav__items-list">
+      <li class="nav-item-m">Features</li>
+      <li class="nav-item-m">Commands</li>
+      <li class="nav-item-m">Documentation</li>
+      <li class="nav-item-m">Premium</li>
+      <li class="nav-item-m">Contact</li>
+    </ul>
+  </nav>
+
+
+  <main>
+
+  </main>
+
+
+
+
+</body>
+
 </html>
