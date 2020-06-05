@@ -1,4 +1,1 @@
-# website
-Website for iceproductions.dev
-
-And... that's all. Nothing here, yet. 
+#Website for Aztec bot, © Ice Productions 2020
