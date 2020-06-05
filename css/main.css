@@ -14,3 +14,12 @@
 body {
   background-color: var(--color-blue);
 }
+
+#mobile-nav > li{
+  list-style: none;
+  color: white;
+}
+
+#desktop-nav {
+  display: none;
+}
