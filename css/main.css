@@ -1,0 +1,25 @@
+:root {
+ --color-blue: #15151D;
+ --color-blue-primary: #4353FF;
+ --color-blue-highlight: #0056FB;
+ --color-blue-shadow: #3946D1;
+ --color-gray: #55555A;
+}
+
+
+
+
+
+
+body {
+  background-color: var(--color-blue);
+}
+
+#mobile-nav > li{
+  list-style: none;
+  color: white;
+}
+
+#desktop-nav {
+  display: none;
+}
