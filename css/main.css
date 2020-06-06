@@ -136,6 +136,8 @@ main > #inv {
 main > .stats-container {
   display: flex;
   justify-content: center;
+  margin-top: 1rem;
+  align-items: center;
 }
 
 main > .stats-container > img {
@@ -149,5 +151,9 @@ main > .stats-container > h2 {
 }
 
 main > .stats-container > span {
-  font-size: 2rem;
+  
+}
+
+.stats-active {
+  color: red;
 }
