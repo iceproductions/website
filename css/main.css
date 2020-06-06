@@ -104,8 +104,8 @@ nav li {
   }
 }
 
-main {
-  margin-top: 50vw;
+main { 
+  margin-top: calc(50vh - (211px/2) - 64px);
 }
 
 #value-proposition {
