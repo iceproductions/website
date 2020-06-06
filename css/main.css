@@ -93,6 +93,16 @@ nav li {
   border-bottom: 2px solid var(--color-blue-primary);
 }
 
+#login-d {
+  border: 2px solid var(--color-gray);
+  border-radius: 100px;
+  height: 3.5rem;
+  margin-top: 1rem;
+  color: var(--color-gray);
+  width: 8rem;
+  background-color: transparent;
+}
+
 #desktop-nav {
   display: none;
 }
@@ -117,7 +127,7 @@ main > #value-proposition {
   display: block;
 }
 
-main > #description {
+main > #desc {
   color: white;
   opacity: 0.7;
   text-align: center;
@@ -159,4 +169,27 @@ main > .stats-container > span {
 
 .stats-active {
   color: red;
+}
+
+section {
+  margin-top: calc(50vh - (211px/2) - 64px);
+}
+
+
+.feather-text {
+  color: white;
+}
+
+#why-desc {
+  color: white;
+}
+
+.why-item {
+  color: white;
+}
+
+.why-item::before {
+  height: 20px;
+  width: 20px;
+  background-color: var(--color-blue);
 }
