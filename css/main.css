@@ -62,21 +62,24 @@ nav li {
   transition: 0.5s ease-in-out;
 }
 
+.mobile-nav__items-list-container {
+  position: relative;
+}
+
 .mobile-nav__items-list {
-  background-color: var(--color-gray);
   width: 100%;
-  margin: 10px 0;
+  background-color: var(--color-gray);
   display: none;
   opacity: 0;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: absolute;
 }
 
 .displayed {
   display: flex;
   opacity: 1;
-  height: 100%;
 }
 
 .nav-item-m {
