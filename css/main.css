@@ -108,7 +108,7 @@ main {
   margin-top: calc(50vh - (211px/2) - 64px);
 }
 
-#value-proposition {
+main > #value-proposition {
   color: white;
   text-align: center;
   display: block;
@@ -131,4 +131,23 @@ main > #inv {
   margin: 2rem auto 0 auto;
   height: 3.5rem;
   width: 12rem;
+}
+
+main > .stats-container {
+  display: flex;
+  justify-content: center;
+}
+
+main > .stats-container > img {
+  height: 20px;
+  margin-right: 0.5rem;
+}
+
+main > .stats-container > h2 {
+  color: white;
+  font-size: 0.8rem;
+}
+
+main > .stats-container > span {
+  font-size: 2rem;
 }
