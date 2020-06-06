@@ -106,3 +106,23 @@ nav li {
     display: flex; /* ? */
   }
 }
+
+main {}
+
+main > #value-proposition {
+  color: white;
+  text-align: center;
+}
+
+main > #description {
+  color: white;
+  opacity: 0.7;
+  text-align: center;
+}
+
+main > #inv {
+  background-color: var(--color-blue-primary);
+  border: none;
+  border-radius: 100px;
+  color: white;
+}
