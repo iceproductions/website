@@ -94,9 +94,6 @@ nav li {
   display: none;
 }
 
-#desktop-nav li {
-}
-
 @media screen and (min-width: 600px) {
   #mobile-nav {
     display: none;
@@ -107,17 +104,22 @@ nav li {
   }
 }
 
-main {}
+main {
+  margin-top: 50vw;
+}
 
-main > #value-proposition {
+#value-proposition {
   color: white;
   text-align: center;
+  display: block;
 }
 
 main > #description {
   color: white;
   opacity: 0.7;
   text-align: center;
+  margin-top: 2rem;
+  display: block;
 }
 
 main > #inv {
@@ -125,6 +127,8 @@ main > #inv {
   border: none;
   border-radius: 100px;
   color: white;
+  display: block;
+  margin: 2rem auto 0 auto;
+  height: 3.5rem;
+  width: 12rem;
 }
-
-//center this button, tommorow!
