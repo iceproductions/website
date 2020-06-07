@@ -227,3 +227,36 @@ section {
   margin-top: 1rem;
   margin-bottom: 2rem;
 }
+
+#highlight-text-2 {
+  color: var(--color-blue-primary)
+}
+
+#feather-text-2 {
+  color: white;
+  margin-left: 1rem;
+}
+
+#features-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+#features-wrapper > img {
+  width: 80%;
+  margin-top: 1rem;
+}
+
+
+
+.feature-title {
+  color: white;
+  margin-bottom: 0rem;
+}
+
+#feature-desc {
+  color: white;
+}
