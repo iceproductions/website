@@ -136,7 +136,7 @@ main > #desc {
   display: block;
 }
 
-main > #inv {
+#inv {
   background-color: var(--color-blue-primary);
   border: none;
   border-radius: 100px;
@@ -146,6 +146,7 @@ main > #inv {
   height: 3.5rem;
   width: 12rem;
 }
+
 
 main > .stats-container {
   display: flex;
@@ -261,6 +262,7 @@ section {
 
 #feature-desc {
   color: white;
+  text-align: center;
 }
 
 #premium-section {
@@ -335,4 +337,34 @@ section {
   border: 2px solid transparent;
   border-radius: 7px;
   width: 90%;
+  margin-top: 38%;
+  height: 2.5rem;
+}
+
+.subscribe-active {
+  background-color: #FFFFFF;
+  border: 2px solid transparent;
+  border-radius: 7px;
+  width: 90%;
+  margin-top: 38%;
+  height: 2.5rem;
+}
+
+.btn-container {
+  text-align: center;
+}
+
+#final-inv-title {
+  text-align: center;
+  color: #FFFFFF;
+}
+
+#final-inv-desc {
+  text-align: center;
+  color: #FFFFFF;
+}
+
+#get-started {
+  color: #4353ff;
+  text-decoration: underline;
 }
