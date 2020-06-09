@@ -250,7 +250,9 @@ section {
   margin-top: 1rem;
 }
 
-
+.section-seperator {
+  margin-top: 12.5rem;
+}
 
 .feature-title {
   color: white;
@@ -259,4 +261,78 @@ section {
 
 #feature-desc {
   color: white;
+}
+
+#premium-section {
+  color: white;
+}
+
+#premium-title {
+  text-align: center;
+}
+
+#premium-title {
+  text-align: center;
+}
+
+#premium-desc {
+  text-align: center;
+}
+
+#premium-cards-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card {
+  height: 400px;
+  width: 80vw;
+  background-color: white;
+  border-radius: 7px;
+  margin-top: 1rem;
+  color: #000000;
+}
+
+.card-active {
+  background-color: var(--color-blue-primary);
+  height: 400px;
+  width: 80vw;
+  border-radius: 7px;
+  margin-top: 1rem;
+}
+
+#premium-tier{
+  margin-left: 1rem;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+#premium-price {
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+  font-size: 4rem;
+}
+
+.sub-info {
+  margin-left: 1rem;
+}
+
+.icon-flex-wrapper {
+  display: flex;
+  flex-direction: row;
+  margin-left: 1rem;
+}
+
+.icon-flex-wrapper > img {
+  height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.subscribe {
+  background-color: var(--color-blue-primary);
+  border: 2px solid transparent;
+  border-radius: 7px;
+  width: 90%;
 }
