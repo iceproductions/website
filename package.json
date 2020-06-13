@@ -3,15 +3,15 @@
   "version": "1.0.0",
   "description": "Website for Ice Productions",
   "main": "index.js",
+  "public": false,
   "scripts": {
     "dev": "npm run watch:sass",
     "build": "npm run compile:sass",
     "compile:sass": "node-sass sass -o css -r",
     "watch:sass": "node-sass sass -o css -r -w"
   },
-  "author": "",
+  "author": "Ice Productions",
   "license": "ISC",
-  "dependencies": {},
   "devDependencies": {
     "node-sass": "^4.13.1"
   }
