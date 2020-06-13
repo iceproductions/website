@@ -1,0 +1,422 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+$blue: #15151d;
+$blue-primary: #4353ff;
+$blue-highlight: #0056fb;
+$blue-shadow: #3946d1;
+$gray: #55555a;
+$purple: #B80062;
+
+body {
+  background-color: $blue;
+}
+
+nav li {
+  list-style: none;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: $blue-primary;
+}
+
+#movile-nav {
+  transition: 2s ease-in-out;
+}
+
+.mobile-nav__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mobile-nav__header > * {
+  margin: 10px 20px;
+}
+
+.hamburger-icon {
+  &.clicked {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  rect {
+    transition: 0.5s ease-in-out;
+  }
+  
+  &.clicked #hamburger-icon__top {
+    transform-origin: center left;
+    transform: translateY(-6px) rotateZ(+43deg);
+    transition: 0.5s ease-in-out;
+  }
+  
+  &.clicked #hamburger-icon__center {
+    opacity: 0;
+  }
+  
+  &.clicked #hamburger-icon__bottom {
+    transform-origin: center left;
+    transform: translateY(6px) rotateZ(-43deg);
+    transition: 0.5s ease-in-out;
+  }
+}
+
+.mobile-nav__items-list-container {
+  position: relative;
+}
+
+.mobile-nav__items-list {
+  width: 100%;
+  background-color: $gray;
+  display: none;
+  opacity: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+
+.displayed {
+  display: flex;
+  opacity: 1;
+}
+
+.nav-item-m {
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.nav-item-m:nth-child(odd) {
+  border-top: 2px solid $blue-primary;
+  border-bottom: 2px solid $blue-primary;
+}
+
+#login-d {
+  border: 2px solid $gray;
+  border-radius: 100px;
+  height: 3.5rem;
+  margin-top: 1rem;
+  color: $gray;
+  width: 8rem;
+  display: none;
+  background-color: transparent;
+}
+
+#desktop-nav {
+  display: none;
+}
+
+@media screen and (min-width: 600px) {
+  #mobile-nav {
+    display: none;
+  }
+
+  #desktop-nav {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 5rem;
+  }
+}
+
+#desktop-nav {  
+  ul {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  ul .left {
+    display: flex;
+    margin: 0.4rem 0;
+  }
+  
+  ul .left li {
+    display: block;
+    margin: 0 2rem;
+  }
+  
+  ul .left li a {
+    color: $gray;
+    font-size: 1.25rem;
+  }
+  
+  ul .left li {
+    margin: 0 0.3rem;
+  }
+  
+  .right li {
+    margin-right: 3rem;
+  }
+  
+  .button.login.nav {
+    border: 0.3rem solid $gray;
+    padding-top: 0.6rem;
+    color: $gray;
+  }
+}
+
+.buttons {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+}
+
+.button {
+  border: none;
+  color: white;
+  display: block;
+  height: 3.5rem;
+  width: 12rem;
+  margin: 1rem 0.7rem;
+  text-decoration: none;
+  padding-top: 0.9rem;
+  text-align: center;
+  font-size: 1.3rem;
+
+  &.invite {
+    background-color: $blue-primary;
+  }
+  
+  &.docs {
+    background-color: $purple;
+  }
+}
+
+main { 
+  margin-top: calc(50vh - (211px/2) - 64px);
+  > #value-proposition {
+    color: white;
+    text-align: center;
+    display: block;
+  }
+  
+  > #desc {
+    color: white;
+    opacity: 0.7;
+    text-align: center;
+    margin-top: 2rem;
+    display: block;
+  }
+  
+  
+  > .stats-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    align-items: center;
+  }
+  
+  > .stats-container > img {
+    height: 20px;
+    margin-right: 0.5rem;
+  }
+  
+  > .stats-container > h2 {
+    color: white;
+    font-size: 0.8rem;
+  }
+  
+  > .stats-container > span {
+    
+  }
+}
+
+
+.stats-active {
+  color: red;
+}
+
+section {
+  margin-top: calc(51vh - (211px/2) - 64px);
+}
+
+
+.feather-text {
+  color: white;
+}
+
+#why-section {
+  margin-left: 1rem;
+}
+
+.why-desc {
+  color: white;
+  margin-left: 2.5rem;
+}
+
+#why-desc {
+  color: white;
+  margin-top: 1rem;
+}
+
+.why-item {
+  color: white;
+  margin-left: 1rem;
+  font-size: 1rem;
+}
+
+.wrapper {
+  margin-bottom: 2rem;
+}
+
+.why-item:before {
+  height: 15px;
+  width: 15px;
+  content: "";
+  display: inline-block;
+  border-radius: 200px;
+  background-color: #4353ff;
+  margin-right: 0.5rem;
+}
+
+.highlight {
+  color: #4353ff;
+}
+
+#why-desc-2 {
+  color: $gray;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+#highlight-text-2 {
+  color: $blue-primary
+}
+
+#feather-text-2 {
+  color: white;
+  margin-left: 1rem;
+}
+
+#features-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+#features-wrapper > img {
+  width: 80%;
+  margin-top: 1rem;
+}
+
+.section-seperator {
+  margin-top: 12.5rem;
+}
+
+.feature-title {
+  color: white;
+  margin-bottom: 0rem;
+}
+
+#feature-desc {
+  color: white;
+  text-align: center;
+}
+
+#premium-section {
+  color: white;
+}
+
+#premium-title, #premium-desc {
+  text-align: center;
+}
+
+#premium-cards-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card {
+  height: 400px;
+  width: 80vw;
+  background-color: white;
+  border-radius: 7px;
+  margin-top: 1rem;
+  color: #000000;
+}
+
+.card-active {
+  background-color: $blue-primary;
+  height: 400px;
+  width: 80vw;
+  border-radius: 7px;
+  margin-top: 1rem;
+}
+
+#premium-tier {
+  margin-left: 1rem;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+#premium-price {
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+  font-size: 4rem;
+}
+
+.sub-info {
+  margin-left: 1rem;
+}
+
+.icon-flex-wrapper {
+  display: flex;
+  flex-direction: row;
+  margin-left: 1rem;
+}
+
+.icon-flex-wrapper > img {
+  height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.subscribe {
+  background-color: $blue-primary;
+  border: 2px solid transparent;
+  border-radius: 7px;
+  width: 90%;
+  margin-top: 38%;
+  height: 2.5rem;
+}
+
+.subscribe-active {
+  background-color: #FFFFFF;
+  border: 2px solid transparent;
+  border-radius: 7px;
+  width: 90%;
+  margin-top: 38%;
+  height: 2.5rem;
+}
+
+.btn-container {
+  text-align: center;
+}
+
+#final-inv-title {
+  text-align: center;
+  color: #FFFFFF;
+}
+
+#final-inv-desc {
+  text-align: center;
+  color: #FFFFFF;
+}
+
+#get-started {
+  color: #4353ff;
+  text-decoration: underline;
+}
