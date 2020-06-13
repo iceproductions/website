@@ -13,6 +13,27 @@ $blue-shadow: #3946d1;
 $gray: #55555a;
 $purple: #B80062;
 
+@mixin hoverBorder {
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    margin: auto;
+    height: 3px;
+    width: 0px;
+    background: transparent;
+    transition: width .5s ease, background-color .5s ease;
+  }
+  &:hover {
+    color: lighten($gray, 20);
+    &::after {
+      width: 100%;
+      background: lighten($gray, 20);
+    }
+  }
+}
+
 body {
   background-color: $blue;
 }
@@ -151,15 +172,16 @@ a {
 
   #desktop-nav {
     display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 5rem;
   }
 }
 
-#desktop-nav {  
+#desktop-nav {
+  background-color: $blue;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 5rem;
   ul {
     display: flex;
     justify-content: space-between;
@@ -167,7 +189,7 @@ a {
   
   ul .left {
     display: flex;
-    margin: 0.4rem 0;
+    margin: 1rem 0;
   }
   
   ul .left li {
@@ -178,9 +200,28 @@ a {
   ul .left li a {
     color: $gray;
     font-size: 1.25rem;
+
+    transition: color 0.2s;
+
+    &:hover {
+      color: lighten($gray, 20);
+    }
+  }
+
+  ul .left #nav-item-logo {
+    height: 3rem;
+    width: 3rem;
+    background-image: url("../img/logo-blue.svg");
+    margin: 0 1rem;
   }
   
+
+  ul .left li.nav-item-d {
+    margin-top: 0.5rem;
+  }
+
   ul .left li {
+    @include hoverBorder();
     margin: 0 0.3rem;
   }
   
@@ -189,9 +230,17 @@ a {
   }
   
   .button.login.nav {
-    border: 0.3rem solid $gray;
-    padding-top: 0.6rem;
+    border: 0.2rem solid $gray;
+    padding-top: 0.5rem;
+    width: 14rem;
     color: $gray;
+
+    transition: color 0.2s, border-color 0.2s;
+
+    &:hover {
+      border-color: lighten($gray, 20);
+      color: lighten($gray, 20);
+    }
   }
 }
 
@@ -206,6 +255,7 @@ a {
   color: white;
   display: block;
   height: 3.5rem;
+  border-radius: 20rem;
   width: 12rem;
   margin: 1rem 0.7rem;
   text-decoration: none;
@@ -215,6 +265,9 @@ a {
 
   &.invite {
     background-color: $blue-primary;
+    font-size: 1.5rem;
+    height: 4rem;
+    width: 13.5rem;
   }
   
   &.docs {
@@ -224,17 +277,20 @@ a {
 
 main { 
   margin-top: calc(50vh - (211px/2));
-  > #value-proposition {
+  > .title {
     color: white;
+    font-size: 3.4rem;
+    font-weight: bold;
     text-align: center;
     display: block;
   }
   
-  > #desc {
+  > .desc {
     color: white;
     opacity: 0.7;
     text-align: center;
-    margin-top: 2rem;
+    font-size: 1.8rem;
+    margin: 1.8rem;
     display: block;
   }
   
@@ -254,6 +310,25 @@ main {
   > .stats-container > h2 {
     color: white;
     font-size: 0.8rem;
+    > a {
+      @include hoverBorder();
+      color: $blue-highlight;
+      font-weight: bolder;
+
+      transition: color 0.5s;
+
+      &::after {
+        background-color: $blue-highlight;
+        transition: background-color 0.5s, width .5s ease, background-color .5s ease
+      }
+
+      &:hover {
+        color: lighten($blue-highlight, 20);
+        &::after {
+          background-color: lighten($blue-highlight, 20);
+        }
+      }
+    }
   }
   
   // > .stats-container > span {
