@@ -136,8 +136,7 @@ main > #desc {
   display: block;
 }
 
-#inv {
-  background-color: var(--color-blue-primary);
+.button {
   border: none;
   border-radius: 100px;
   color: white;
@@ -145,6 +144,14 @@ main > #desc {
   margin: 2rem auto 0 auto;
   height: 3.5rem;
   width: 12rem;
+  text-decoration: none;
+  padding-top: 0.7rem;
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.button.invite {
+  background-color: var(--color-blue-primary);
 }
 
 
