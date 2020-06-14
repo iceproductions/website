@@ -50,8 +50,15 @@ a {
   color: $blue-primary;
 }
 
-#movile-nav {
+#mobile-nav {
   transition: 2s ease-in-out;
+  position: fixed;
+  height: 64px;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background: $blue;
+  z-index: 100;
 }
 
 .mobile-nav__header {
@@ -290,6 +297,10 @@ a {
 main {
   margin-top: calc(50vh - (211px/2));
 
+  @media screen and (max-width: 600px) {
+    margin-top: calc(50vh - (211px/2) - 64px);
+  }
+
   >.title {
     color: white;
     font-size: 3.4rem;
@@ -361,21 +372,27 @@ section {
 }
 
 
-.feather-text {
-  color: white;
-}
 
 .section-content {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-
+  
   &.why {
+    .feather-text {
+      color: white;
+      @media screen and (max-width: 900px) {
+        padding-left: 1.5rem;
+      }
+    }
 
     #why-desc {
       font-size: 1.5rem;
       color: white;
       margin-top: 1rem;
+      @media screen and (max-width: 900px) {
+        padding-left: 1.5rem;
+      }
     }
 
     .why-container {
@@ -506,6 +523,10 @@ section {
     align-items: center;
     max-width: 900px;
     margin: auto;
+
+    @media screen and (max-width: 900px) {
+      flex-direction: column;
+    }
   }
 
   .card {
@@ -525,6 +546,11 @@ section {
       color: gray;
       font-size: 0.8rem;
     }
+
+    @media screen and (max-width: 900px) {
+      width: 80%;
+      margin-top: 1rem;
+    }
   }
 
   .card-active {
@@ -535,6 +561,11 @@ section {
     height: 34rem;
     border-radius: 7px;
     margin-top: 1rem;
+
+    @media screen and (max-width: 900px) {
+      box-shadow: none;
+      width: 80%;
+    }
 
     .sub-info {
       color: darken(white, 20);
@@ -613,17 +644,28 @@ section {
 
 footer {
   margin-top: 20vh;
-  height: 300px;
   width: calc(100vw - 15px);
   background: black;
   color: white;
   
+  @media screen and (min-width: 900px) {
+    height: 300px;
+  }
+
   .container {
     max-width: 1200px;
     height: 100%;
     margin: auto;
     display: flex;
     justify-content: space-between;
+
+    @media screen and (max-width: 900px) {
+      flex-direction: column;
+
+      > * {
+        margin: auto;
+      }
+    }
     
     #col-1 {
       display: flex;
@@ -634,6 +676,10 @@ footer {
         hr {
           width: 30%;
           border-color: lighten($gray, 20);
+
+          @media screen and (max-width: 900px) {
+            display: none;
+          }
         }
         h2 {
           margin-top: 0.5rem;
@@ -646,6 +692,10 @@ footer {
       height: 200px;
       margin-top: 50px;
 
+      @media screen and (max-width: 900px) {
+        width: 200px;
+        text-align: center;
+      }
       nav {
         h3 {
           font-size: 1.8rem;
