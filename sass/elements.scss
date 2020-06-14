@@ -1,0 +1,98 @@
+$blue: #15151d;
+$blue-primary: #4353ff;
+$blue-highlight: #0056fb;
+$blue-shadow: #3946d1;
+$gray: #55555a;
+$purple: #B80062;
+
+
+@mixin hoverBorder($color) {
+    position: relative;
+
+    &::after {
+        content: '';
+        display: block;
+        margin: auto;
+        height: 3px;
+        width: 0px;
+        background: transparent;
+        transition: width .5s ease, background-color .5s ease;
+    }
+
+    &:hover {
+        color: $color;
+
+        &::after {
+            width: 100%;
+            background: $color;
+        }
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    min-height: 100vh;
+    background: $blue;
+    color: white;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding-top: 2rem;
+}
+
+a {
+    color: $blue-highlight;
+    text-decoration: none;
+    transition: color 0.3s;
+
+    &:hover {
+        color: lighten($blue-highlight, 20);
+    }
+
+    &.underline {
+        @include hoverBorder($blue-highlight);
+    }
+}
+
+button,
+.button,
+input[type=submit] {
+    border: none;
+    color: white;
+    display: block;
+    height: 3.5rem;
+    border-radius: 20rem;
+    margin: 1rem 0.7rem;
+    text-decoration: none;
+    padding-top: 0.9rem;
+    text-align: center;
+    font-size: 1.3rem;
+    padding: 0 1rem;
+    background-color: $blue-highlight;
+    transition: background-color .3s;
+
+    &:hover {
+        color: white; //prevent anchors
+        background-color: lighten($color: $blue-highlight, $amount: 20);
+    }
+}
+
+.example {
+
+    .buttons,
+    .links {
+        >* {
+            width: max-content;
+            display: block;
+            margin: .5rem 0;
+        }
+    }
+}
