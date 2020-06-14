@@ -25,8 +25,10 @@ $purple: #B80062;
     background: transparent;
     transition: width .5s ease, background-color .5s ease;
   }
+
   &:hover {
     color: lighten($gray, 20);
+
     &::after {
       width: 100%;
       background: lighten($gray, 20);
@@ -59,7 +61,7 @@ a {
   align-items: center;
 }
 
-.mobile-nav__header > * {
+.mobile-nav__header>* {
   margin: 10px 20px;
 }
 
@@ -69,21 +71,21 @@ a {
     justify-content: center;
     align-items: center;
   }
-  
+
   rect {
     transition: 0.5s ease-in-out;
   }
-  
+
   &.clicked #hamburger-icon__top {
     transform-origin: center left;
     transform: translateY(-6px) rotateZ(+43deg);
     transition: 0.5s ease-in-out;
   }
-  
+
   &.clicked #hamburger-icon__center {
     opacity: 0;
   }
-  
+
   &.clicked #hamburger-icon__bottom {
     transform-origin: center left;
     transform: translateY(6px) rotateZ(-43deg);
@@ -93,23 +95,25 @@ a {
 
 .stats {
   color: white;
-  background: $blue-highlight;
+  background: $blue-primary;
   text-align: center;
+
   .container {
     max-width: 800px;
     margin: auto;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-evenly;
-    padding: 2rem 0;
-    
-    .stat + .stat {
+    padding: 3rem 0;
+
+    .stat+.stat {
       border-left: solid 1px white;
     }
 
     .stat {
       width: 25%;
       text-align: center;
+
       .number {
         text-align: center;
         font-size: 2rem;
@@ -178,25 +182,27 @@ a {
 #desktop-nav {
   background-color: $blue;
   position: fixed;
+  z-index: 99;
   top: 0;
   left: 0;
   width: 100vw;
   height: 5rem;
+
   ul {
     display: flex;
     justify-content: space-between;
   }
-  
+
   ul .left {
     display: flex;
     margin: 1rem 0;
   }
-  
+
   ul .left li {
     display: block;
     margin: 0 2rem;
   }
-  
+
   ul .left li a {
     color: $gray;
     font-size: 1.25rem;
@@ -214,7 +220,7 @@ a {
     background-image: url("../img/logo-blue.svg");
     margin: 0 1rem;
   }
-  
+
 
   ul .left li.nav-item-d {
     margin-top: 0.5rem;
@@ -224,11 +230,11 @@ a {
     @include hoverBorder();
     margin: 0 0.3rem;
   }
-  
+
   .right li {
     margin-right: 3rem;
   }
-  
+
   .button.login.nav {
     border: 0.2rem solid $gray;
     padding-top: 0.5rem;
@@ -268,24 +274,31 @@ a {
     font-size: 1.5rem;
     height: 4rem;
     width: 13.5rem;
+
+    transition: background-color 0.5s;
+
+    &:hover {
+      background-color: lighten($blue-primary, 5);
+    }
   }
-  
+
   &.docs {
     background-color: $purple;
   }
 }
 
-main { 
+main {
   margin-top: calc(50vh - (211px/2));
-  > .title {
+
+  >.title {
     color: white;
     font-size: 3.4rem;
     font-weight: bold;
     text-align: center;
     display: block;
   }
-  
-  > .desc {
+
+  >.desc {
     color: white;
     opacity: 0.7;
     text-align: center;
@@ -293,24 +306,25 @@ main {
     margin: 1.8rem;
     display: block;
   }
-  
-  
-  > .stats-container {
+
+
+  >.stats-container {
     display: flex;
     justify-content: center;
     margin-top: 1rem;
     align-items: center;
   }
-  
-  > .stats-container > img {
+
+  >.stats-container>img {
     height: 20px;
     margin-right: 0.5rem;
   }
-  
-  > .stats-container > h2 {
+
+  >.stats-container>h2 {
     color: white;
     font-size: 0.8rem;
-    > a {
+
+    >a {
       @include hoverBorder();
       color: $blue-highlight;
       font-weight: bolder;
@@ -324,13 +338,14 @@ main {
 
       &:hover {
         color: lighten($blue-highlight, 20);
+
         &::after {
           background-color: lighten($blue-highlight, 20);
         }
       }
     }
   }
-  
+
   // > .stats-container > span {
   //
   // }
@@ -350,58 +365,106 @@ section {
   color: white;
 }
 
-#why-section {
-  margin-left: 1rem;
-}
+.section-content {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 
-.why-desc {
-  color: white;
-  margin-left: 2.5rem;
-}
+  &.why {
 
-#why-desc {
-  color: white;
-  margin-top: 1rem;
-}
+    #why-desc {
+      font-size: 1.5rem;
+      color: white;
+      margin-top: 1rem;
+    }
 
-.why-item {
-  color: white;
-  margin-left: 1rem;
-  font-size: 1rem;
+    .why-container {
+      padding: 1rem;
+      display: flex;
+      max-width: 900px;
+      margin: auto;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+
+      .wrapper {
+        display: flexbox;
+        width: 50%;
+
+        .why-desc {
+          color: white;
+          margin-left: 2.5rem;
+          display: block;
+          max-width: 600px;
+        }
+      }
+
+      .why-item {
+        color: white;
+        font-size: 1rem;
+        margin: 1rem 1rem;
+
+        &::before {
+          height: 15px;
+          width: 15px;
+          content: "";
+          display: inline-block;
+          border-radius: 50%;
+          background-color: #4353ff;
+          margin-right: 0.5rem;
+        }
+      }
+    }
+
+    .feather-text {
+      margin: 2rem 0.1rem;
+
+      .highlight {
+        color: #4353ff;
+      }
+    }
+
+    #why-desc-2 {
+      $color: lighten($gray, 30);
+      color: $color;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+      max-width: 500px;
+      margin-left: 5rem;
+      position: relative;
+
+      &::before {
+        display: inline-block;
+        content: "";
+        width: 1rem;
+        height: .8rem;
+        position: absolute;
+        left: -2.5rem;
+        top: .5rem;
+        border-left: .2rem solid $color;
+        border-bottom: .2rem solid $color;
+      }
+    }
+
+
+  }
+
+  &.features {
+    #feather-text-2 {
+      color: white;
+      margin-left: 1rem;
+
+      #highlight-text-2 {
+        color: $blue-primary
+      }
+    }
+  }
+
 }
 
 .wrapper {
   margin-bottom: 2rem;
 }
 
-.why-item:before {
-  height: 15px;
-  width: 15px;
-  content: "";
-  display: inline-block;
-  border-radius: 200px;
-  background-color: #4353ff;
-  margin-right: 0.5rem;
-}
-
-.highlight {
-  color: #4353ff;
-}
-
-#why-desc-2 {
-  color: $gray;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-}
-
-#highlight-text-2 {
-  color: $blue-primary
-}
-
-#feather-text-2 {
-  color: white;
-  margin-left: 1rem;
-}
 
 #features-wrapper {
   display: flex;
@@ -411,7 +474,7 @@ section {
   margin-top: 1rem;
 }
 
-#features-wrapper > img {
+#features-wrapper>img {
   width: 80%;
   margin-top: 1rem;
 }
@@ -432,96 +495,181 @@ section {
 
 #premium-section {
   color: white;
+
+  #premium-title,
+  #premium-desc {
+    text-align: center;
+  }
+
+  #premium-cards-wrapper {
+    display: flex;
+    align-items: center;
+    max-width: 900px;
+    margin: auto;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 30rem;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 7px;
+    margin-top: 2rem;
+    color: #000000;
+    z-index: 4;
+
+    .sub-info {
+      margin-left: 1rem;
+      color: gray;
+      font-size: 0.8rem;
+    }
+  }
+
+  .card-active {
+    color: white;
+    box-shadow: 0 0 5px $blue-highlight;
+    z-index: 5;
+    background-color: $blue-highlight;
+    height: 34rem;
+    border-radius: 7px;
+    margin-top: 1rem;
+
+    .sub-info {
+      color: darken(white, 20);
+    }
+  }
+
+  #premium-tier {
+    margin-left: 1rem;
+    margin-top: 1rem;
+    font-size: 1rem;
+  }
+
+  #premium-price {
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+    font-size: 4rem;
+  }
+
+
+  .icon-flex-wrapper {
+    display: flex;
+    flex-direction: row;
+    margin-left: 1rem;
+  }
+
+  .icon-flex-wrapper>img {
+    height: 1rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .subscribe {
+    background-color: $blue-primary;
+    border: 2px solid transparent;
+    color: white;
+    border-radius: 7px;
+    width: 90%;
+    margin-top: 38%;
+    height: 2.5rem;
+  }
+
+  .subscribe-active {
+    background-color: #FFFFFF;
+    border: 2px solid transparent;
+    border-radius: 7px;
+    width: 90%;
+    margin-top: 38%;
+    height: 2.5rem;
+  }
+
+  .btn-container {
+    text-align: center;
+  }
 }
 
-#premium-title, #premium-desc {
-  text-align: center;
-}
+#final-inv-section {
+  #final-inv-title {
+    text-align: center;
+    color: #FFFFFF;
+  }
 
-#premium-cards-wrapper {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
+  #final-inv-desc {
+    text-align: center;
+    color: #FFFFFF;
+  }
 
-.card {
-  height: 400px;
-  width: 80vw;
-  background-color: white;
-  border-radius: 7px;
-  margin-top: 1rem;
-  color: #000000;
-}
-
-.card-active {
-  background-color: $blue-primary;
-  height: 400px;
-  width: 80vw;
-  border-radius: 7px;
-  margin-top: 1rem;
-}
-
-#premium-tier {
-  margin-left: 1rem;
-  margin-top: 1rem;
-  font-size: 1rem;
-}
-
-#premium-price {
-  margin-left: 1rem;
-  margin-top: 0.5rem;
-  font-size: 4rem;
-}
-
-.sub-info {
-  margin-left: 1rem;
-}
-
-.icon-flex-wrapper {
-  display: flex;
-  flex-direction: row;
-  margin-left: 1rem;
-}
-
-.icon-flex-wrapper > img {
-  height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.subscribe {
-  background-color: $blue-primary;
-  border: 2px solid transparent;
-  border-radius: 7px;
-  width: 90%;
-  margin-top: 38%;
-  height: 2.5rem;
-}
-
-.subscribe-active {
-  background-color: #FFFFFF;
-  border: 2px solid transparent;
-  border-radius: 7px;
-  width: 90%;
-  margin-top: 38%;
-  height: 2.5rem;
-}
-
-.btn-container {
-  text-align: center;
-}
-
-#final-inv-title {
-  text-align: center;
-  color: #FFFFFF;
-}
-
-#final-inv-desc {
-  text-align: center;
-  color: #FFFFFF;
+  .button {
+    margin: 1rem auto;
+  }
 }
 
 #get-started {
   color: #4353ff;
   text-decoration: underline;
+}
+
+footer {
+  margin-top: 20vh;
+  height: 300px;
+  width: calc(100vw - 15px);
+  background: black;
+  color: white;
+  
+  .container {
+    max-width: 1200px;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    
+    #col-1 {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+
+      .split2 {
+        hr {
+          width: 30%;
+          border-color: lighten($gray, 20);
+        }
+        h2 {
+          margin-top: 0.5rem;
+          font-size: 1.1rem;
+        }
+      }
+    }
+
+    .col {
+      height: 200px;
+      margin-top: 50px;
+
+      nav {
+        h3 {
+          font-size: 1.8rem;
+        }
+        ul {
+          margin-top: 1rem;
+          li {
+            margin-top: 0.3rem;
+            color: $gray;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Custom scrollbars
+body {
+  &::-webkit-scrollbar {
+    width: 0.9rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $gray;
+    border-radius: 15px;
+  }
 }
