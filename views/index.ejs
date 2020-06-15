@@ -43,8 +43,13 @@
         <li class="nav-item-d"><a href="#contanct">Contact</a></li>
       </div>
       <div class="right">
-        <li class="nav-item-d"><a href="/login" class="button login nav">Login with <span
-              class="discord">Discord</span></a></li>
+        <li class="nav-item-d">
+          <% if(!user){ %>
+            <a href="/login" class="button login nav">Login with Discord</a>
+          <% } else { %>
+            <a href="/dashboard" class="button login nav">Go to Dashboard</a>
+          <% } %>
+        </li>
       </div>
     </ul>
   </nav>
@@ -58,7 +63,11 @@
         <rect id="hamburger-icon__center" y="20" x="6" width="32" height="4" />
         <rect id="hamburger-icon__bottom" y="32" x="6" width="32" height="4" />
       </svg>
-      <a href="#dashboard" class="button dashboard" id="login-d">Dashboard</a>
+      <% if(!user){ %>
+        <a href="/login" class="button dashboard" id="login-d">Login with Discord</a>
+      <% } else { %>
+        <a href="/dashboard" class="button dashboard" id="login-d">Continue to Dashboard</a>
+      <% } %>
     </div>
 
     <ul id="nav-menu" class="mobile-nav__items-list">
@@ -75,7 +84,13 @@
     <p id="desc" class="desc">Create fun and amazing experiences for your <br /> discord users with tons of features and
       commands.</p>
     <div class="buttons">
-      <a href="http://go-dan.tk/invite" target="_blank" class="button invite" id="inv">Invite to server</a>
+      <% if(!user){ %>
+        <a href="http://go-dan.tk/invite" target="_blank" class="button invite" id="inv">Invite to server</a>
+        <a href="/login" class="button invite login">Login with Discord</a>
+      <% } else { %>
+        <a href="http://go-dan.tk/invite" target="_blank" class="button invite" id="inv">Invite to server</a>
+        <a href="/dashboard" class="button invite login">Continue to Dashboard</a>
+      <% } %>
     </div>
     <div class="stats-container">
       <h2>Made by <a href="//iceproductions.dev/" class="link" target="_blank">Ice Productions</a></h2>
