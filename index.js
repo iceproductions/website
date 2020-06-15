@@ -144,18 +144,19 @@ app.get("/callback", async (req, res) => {
     res.redirect("/dashboard");
 });
 
-async function fetchUserData(req) {
+async function fetchUserData(req, opts = {}) {
     if (!req.cookies.token) {
         return res.redirect("/login");
     }
     const user = await oauth.getUser(req.cookies.token);
-    const guilds = await got("https://discord.com/api/users/@me/guilds", {
-        headers: {
-            Authorization: "Bearer " + req.cookies.token
-        },
-        responseType: "json",
-        resolveBodyOnly: true
-    }).json();
+    if(!opts.ignoreGuilds)
+        var guilds = await got("https://discord.com/api/users/@me/guilds", {
+            headers: {
+                Authorization: "Bearer " + req.cookies.token
+            },
+            responseType: "json",
+            resolveBodyOnly: true
+        }).json();
     if (!user || !guilds) {
         console.log(!user ? "User missing" : (!guilds ? "Guilds missing" : ""));
         return res.redirect("/login");
@@ -185,9 +186,29 @@ app.get("/dashboard/:guild", async (req, res) => {
 
     if(!guild) return res.redirect("/dashboard");
 
-    return res.render("guild", {
+    return res.render("dashboard/guild", {
         user,
         availableGuilds,
+        guild
+    });
+});
+
+app.get("/list", async (req, res) => {
+    var { user } = await fetchUserData(req, { ignoreSettings: true });
+
+    return res.render("list", {
+        user,
+        guilds: []
+    });
+});
+
+app.get("/list/:guild", async (req, res) => {
+    var { user } = await fetchUserData(req, { ignoreSettings: true });
+
+    const guild = client.guilds.resolve(req.params.guild);
+        
+    return res.render("list/guild", {
+        user,
         guild
     });
 });

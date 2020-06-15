@@ -5,6 +5,10 @@
     <title>Aztec server list</title>
 </head>
 <body>
-    Guild info to be done
+    <% if(guild) { %>
+        Guild "<%=guild.name; %>"
+    <% } else { %>
+        Not found
+    <% } %>
 </body>
 </html>

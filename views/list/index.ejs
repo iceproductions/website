@@ -5,6 +5,22 @@
     <title>Aztec server list</title>
 </head>
 <body>
-    To be done
+    Public guilds:
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Member count</th>
+        </tr>
+        <% for(var guild of guilds) { %>
+            <tr>
+                <td><a href="/list/<%=guild.id %>"><%=guild.name %></a></td>
+                <td><%=guild.member_count %></td>
+            </tr>
+        <% } %>
+    </table>
+    <% if(!guild) var guild = []; %>
+    <% if(!guild.length) { %>
+        Guild list isn't available
+    <% } %>
 </body>
 </html>
