@@ -6,5 +6,20 @@
 </head>
 <body>
     Hey there <%=user.username %>#<%=user.discriminator %>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Owner</th>
+            <th>ID</th>
+        </tr>
+        <% for(var guild of availableGuilds) { %>
+            <tr>
+                <td><%= guild.name; %></td>
+                <td><%= guild.owner ? "yes" : "no"; %></td>
+                <td><%= guild.id; %></td>
+            </tr>
+        <% } %>
+    </table>
 </body>
 </html>
