@@ -164,37 +164,35 @@ async function fetchUserData(req) {
     for(var guild of guilds) {
         guild.permissions = convertPerms(guild.permissions);
     }
-    return { user, guilds };
-}
-
-app.get("/dashboard", async (req, res) => {
-    var {user, guilds} = await fetchUserData(req);
-
-    return res.render("dashboard", {
+    return {
         user,
         guilds,
         availableGuilds: guilds.filter(g => {
             if(!g.permissions.ADMINISTRATOR) return false;
             return !!client.guilds.resolve(g.id);
-        })
-    });
+        }) 
+    };
+}
+
+app.get("/dashboard", async (req, res) => {
+    return res.render("dashboard", await fetchUserData(req));
 });
 
 app.get("/dashboard/:guild", async (req, res) => {
-    var {user, guilds} = await fetchUserData(req);
+    var {user, availableGuilds} = await fetchUserData(req);
 
-    var guild = guilds.filter(g => g.id === req.params.guild)[0];
+    var guild = availableGuilds.filter(g => g.id === req.params.guild)[0];
 
     if(!guild) return res.redirect("/dashboard");
 
     return res.render("guild", {
         user,
-        guilds,
+        availableGuilds,
         guild
     });
 });
 
 app.listen(8080, () => {
     console.log("Listening at", "http://localhost:8080/");
-    opn("http://localhost:8080/");
+    if(!process.argv.includes("--noop")) opn("http://localhost:8080/");
 });
