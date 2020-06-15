@@ -6,7 +6,7 @@
 </head>
 <body>
     <% if(guild) { %>
-        Guild "<%=guild.name; %>"
+        Guild "<%=guild.name; %>". Voted: <%=guild.voted ? "Yes" : "No" %>. Are you in group? <%=userGuild ? "Yes" : "No" %>
     <% } else { %>
         Not found
     <% } %>

@@ -14,12 +14,12 @@
         <% for(var guild of guilds) { %>
             <tr>
                 <td><a href="/list/<%=guild.id %>"><%=guild.name %></a></td>
-                <td><%=guild.member_count %></td>
+                <td><%=guild.memberCount %></td>
             </tr>
         <% } %>
     </table>
-    <% if(!guild) var guild = []; %>
-    <% if(!guild.length) { %>
+    <% if(!guilds) var guilds = []; %>
+    <% if(!guilds.length) { %>
         Guild list isn't available
     <% } %>
 </body>

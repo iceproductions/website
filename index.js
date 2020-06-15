@@ -18,7 +18,9 @@ const pool = mysql.createPool({
     host: process.env.DBHOST || "127.0.0.1",
     user: process.env.DBUSER || "root",
     password: process.env.DBPASS || "",
-    database: process.env.DB || "ice"
+    database: process.env.DB || "ice",
+    supportBigNumbers: true,
+    bigNumberStrings: true
 });
 const client = new Discord.Client({
     messageCacheMaxSize: 5,
@@ -157,30 +159,42 @@ async function fetchUserData(req, opts = {}) {
             responseType: "json",
             resolveBodyOnly: true
         }).json();
-    if (!user || !guilds) {
+    if (!user || (!guilds && !opts.ignoreGuilds)) {
         console.log(!user ? "User missing" : (!guilds ? "Guilds missing" : ""));
-        return res.redirect("/login");
+        throw new Error("User not logged in");
     }
 
-    for(var guild of guilds) {
-        guild.permissions = convertPerms(guild.permissions);
-    }
-    return {
+    if(!opts.ignoreGuilds)
+        for(var guild of guilds) {
+            guild.permissions = convertPerms(guild.permissions);
+        }
+    var returned = { user };
+    if(!opts.ignoreGuilds) returned = {
         user,
         guilds,
         availableGuilds: guilds.filter(g => {
             if(!g.permissions.ADMINISTRATOR) return false;
             return !!client.guilds.resolve(g.id);
         }) 
-    };
+    }
+    return returned;
 }
 
 app.get("/dashboard", async (req, res) => {
-    return res.render("dashboard", await fetchUserData(req));
+    try {
+       var user = await fetchUserData(req);
+    } catch(e) {
+        return res.redirect("/login");
+    }
+    return res.render("dashboard", user);
 });
 
 app.get("/dashboard/:guild", async (req, res) => {
-    var {user, availableGuilds} = await fetchUserData(req);
+    try {
+        var {user, availableGuilds} = await fetchUserData(req);
+    } catch(e) {
+        return res.redirect("/login");
+    }
 
     var guild = availableGuilds.filter(g => g.id === req.params.guild)[0];
 
@@ -193,23 +207,79 @@ app.get("/dashboard/:guild", async (req, res) => {
     });
 });
 
+async function fetchPublicGuild(id) {
+    var [guildVotes] = await pool.query("SELECT COUNT(v.id) AS votes FROM guilds as g LEFT JOIN votes AS v ON v.guild = g.snowflake WHERE g.public = true AND g.snowflake = ?", [id]);
+    guildVotes = guildVotes[0];
+    if(!guildVotes) throw new Error("Guild not found or not public");
+
+    var guild = client.guilds.resolve(id);
+    guild.votes = guildVotes.votes;
+    return guild;
+}
+
+async function fetchPublicGuilds(offset, max) {
+    var [guilds] = await pool.query("SELECT g.snowflake as id, COUNT(v.id) AS votes FROM guilds as g LEFT JOIN votes AS v ON v.guild = g.snowflake WHERE g.public = true LIMIT ?,?", [offset, max]);
+    console.log(guilds.length, offset, max);
+    for(var guild in guilds) {
+        guilds[guild] = {
+            ...guilds[guild],
+            ...client.guilds.resolve(guilds[guild].id)
+        };
+    }
+
+    guilds = guilds.filter(g => !!g.name);
+
+    return guilds;
+}
+
+function fetchGuildAs(guild, token) {
+    return got("https://discord.com/api/users/@me/guilds/" + guild, {
+        headers: {
+            Authorization: "Bearer " + token
+        },
+        responseType: "json",
+        resolveBodyOnly: true
+    }).json();
+}
+
+async function userVoted(id, guild) {
+    return await !!await pool.query("SELECT id FROM votes WHERE user = ? AND guild = ? AND date > NOW() - INTERVAL 12 HOUR", [id, guild])[0];
+}
+
 app.get("/list", async (req, res) => {
-    var { user } = await fetchUserData(req, { ignoreSettings: true });
+    try {
+        var { user } = await fetchUserData(req, { ignoreGuilds: true });
+    } catch(e) {
+        return res.redirect("/login");
+    }
+
+    var guilds =  await fetchPublicGuilds(0, 10);
+    console.log(guilds);
 
     return res.render("list", {
         user,
-        guilds: []
+        guilds
     });
 });
 
 app.get("/list/:guild", async (req, res) => {
-    var { user } = await fetchUserData(req, { ignoreSettings: true });
+    try {
+        var { user, guilds } = await fetchUserData(req);
+    } catch(e) {
+        return res.redirect("/login");
+    }
 
-    const guild = client.guilds.resolve(req.params.guild);
+    const guild = await fetchPublicGuild(req.params.guild);
+
+    const userGuild = guilds.filter(g => g.id === guild.id);
+
+    const voted = userVoted(user.id, guild.id);
         
     return res.render("list/guild", {
         user,
-        guild
+        guild,
+        voted,
+        userGuild
     });
 });
 
