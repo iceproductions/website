@@ -244,8 +244,7 @@ a {
 
   .button.login.nav {
     border: 0.2rem solid $gray;
-    padding-top: 0.5rem;
-    width: 14rem;
+    padding: 0.7rem 1rem;
     color: $gray;
 
     transition: color 0.2s, border-color 0.2s;
@@ -269,10 +268,9 @@ a {
   display: block;
   height: 3.5rem;
   border-radius: 20rem;
-  width: 12rem;
   margin: 1rem 0.7rem;
   text-decoration: none;
-  padding-top: 0.9rem;
+  padding: 1rem 3rem;
   text-align: center;
   font-size: 1.3rem;
 
@@ -280,12 +278,18 @@ a {
     background-color: $blue-primary;
     font-size: 1.5rem;
     height: 4rem;
-    width: 13.5rem;
 
     transition: background-color 0.5s;
-
+    
     &:hover {
       background-color: lighten($blue-primary, 5);
+    }
+
+    &.login {
+      background-color: $purple;
+      &:hover {
+        background-color: lighten($color: $purple, $amount: 20);
+      }
     }
   }
 
