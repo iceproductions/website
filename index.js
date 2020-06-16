@@ -242,7 +242,7 @@ function mysql_escape_string (str) {
 }
 
 async function fetchPublicGuild(id, onlyVotes) {
-    var [guildVotes] = await pool.query(`SELECT g.snowflake as id, COUNT(v.id) AS votes
+    var [guildVotes] = await pool.query(`SELECT g.public as public, g.owner as owner, g.boosted as boosted, g.verified as verified, g.snowflake as id, COUNT(v.id) AS votes
     FROM guilds as g LEFT JOIN votes AS v
     ON v.guild = g.snowflake WHERE public = true AND g.snowflake = ? GROUP BY g.snowflake`, [id]);
     guildVotes = guildVotes[0];
@@ -258,7 +258,7 @@ async function fetchPublicGuild(id, onlyVotes) {
 async function fetchPublicGuildsByArray(ids) {
     ids = ids.map(i => "'" + mysql_escape_string(i) + "'");
     ids = ids.join(",");
-    var [votes] = await pool.query(`SELECT g.public as public, g.snowflake as id, COUNT(v.id) AS votes
+    var [votes] = await pool.query(`SELECT g.owner as owner, g.boosted as boosted, g.verified as verified, g.public as public, g.snowflake as id, COUNT(v.id) AS votes
     FROM guilds as g LEFT JOIN votes AS v
     ON v.guild = g.snowflake
     WHERE g.public = true
@@ -272,7 +272,7 @@ GROUP BY g.snowflake `);
 }
 
 async function fetchPublicGuilds(offset, max) {
-    var [guilds] = await pool.query(`SELECT g.snowflake as id, COUNT(v.id) AS votes
+    var [guilds] = await pool.query(`SELECT g.owner as owner, g.boosted as boosted, g.verified as verified, g.snowflake as id, COUNT(v.id) AS votes
     FROM guilds as g LEFT JOIN votes AS v
     ON v.guild = g.snowflake WHERE public = true GROUP BY g.snowflake ORDER BY votes DESC LIMIT ?,?`, [offset, max]);
 
