@@ -10,12 +10,22 @@
     <table>
         <tr>
             <th>Name</th>
+            <th>Votes</th>
             <th>Owner</th>
             <th>ID</th>
         </tr>
         <% for(var guild of availableGuilds) { %>
             <tr>
-                <td><%= guild.name; %></td>
+                <td>
+                    <a href="dashboard/<%=guild.id; %>"><%= guild.name; %></a>
+                </td>
+                <td>
+                    <% if(typeof guild.votes !== "undefined"){ %>
+                        <a href="list/<%=guild.id; %>"><%=guild.votes; %></a>
+                    <% } else { %>
+                        Unlisted
+                    <% } %>
+                </td>
                 <td><%= guild.owner ? "yes" : "no"; %></td>
                 <td><%= guild.id; %></td>
             </tr>
