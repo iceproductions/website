@@ -289,7 +289,7 @@ async function fetchPublicGuilds(offset, max) {
 }
 
 async function userVoted(id, guild) {
-    return await !!await pool.query("SELECT id FROM votes WHERE user = ? AND guild = ? AND date > NOW() - INTERVAL 12 HOUR", [id, guild])[0];
+    return await !!await pool.query("SELECT id FROM votes WHERE user = ? AND guild = ? AND date > NOW() - INTERVAL 1 HOUR", [id, guild])[0];
 }
 
 app.get("/list", async (req, res) => {
