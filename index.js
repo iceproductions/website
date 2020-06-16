@@ -220,8 +220,8 @@ async function fetchPublicGuild(id) {
 async function fetchPublicGuilds(offset, max) {
     var [guilds] = await pool.query(`SELECT g.snowflake as id, COUNT(v.id) AS votes
     FROM guilds as g LEFT JOIN votes AS v
-    ON v.guild = g.snowflake WHERE public = true GROUP BY g.snowflake LIMIT ?,?`, [offset, max]);
-    console.log(guilds.length, offset, max);
+    ON v.guild = g.snowflake WHERE public = true GROUP BY g.snowflake ORDER BY votes DESC LIMIT ?,?`, [offset, max]);
+
     for(var guild in guilds) {
         guilds[guild] = {
             ...guilds[guild],
