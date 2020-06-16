@@ -1,0 +1,154 @@
+
+$blue: #15151d;
+$blue-light: lighten($blue, 20);
+$blue-primary: #4353ff;
+$blue-highlight: #0056fb;
+$blue-shadow: #3946d1;
+$gray: #55555a;
+$purple: #B80062;
+
+body {
+    color: white;
+    background-color: $blue-light;
+}
+.search {
+    h1 {
+        color: white;
+        font-size: 4rem;
+    }
+    .text {
+        width: 20rem;
+        height: 2.7rem;
+        font-size: 1.8rem;
+        padding-left: 0.3rem;
+        padding-right: 0.3rem;
+        border-radius: 10px;
+        outline: none;
+    }
+
+    width: 100vw;
+    margin-top: 0;
+    padding-top: 8rem;
+    text-align: center;
+    margin-bottom: 7rem;
+
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 120%;
+        width: 100%;
+        transform: skewY(-4deg);
+        z-index: -1;
+        background-color: $blue;
+    }
+}
+
+.top-guilds {
+    margin-top: 0;
+
+    h1 {
+        margin: 1rem;
+        margin-left: 5rem;
+    }
+
+    .scrollable {
+        display: flex;
+        justify-content: space-evenly;
+
+        .card {
+            color: white;
+            width: 20rem;
+            height: 23rem;
+            background-color: $blue;
+            border-radius: 15px;
+            position: relative;
+
+            h1 {
+                margin: 0;
+
+                &.verified {
+                    margin-left: 1.2rem;
+                    position: relative;
+
+                    &::before {
+                        position: absolute;
+                        top: 0.25rem;
+                        left: -1.2rem;
+                        content: "✓";
+                        font-size: 0.8rem;
+                        border-radius: 50%;
+                        padding-left: 0.15rem;
+                        padding-bottom: 0.15rem;
+                        width: 0.85rem;
+                        height: 0.85rem;
+                        background-color: $blue-highlight;
+                    }
+                }
+            }
+
+            .banner {
+                width: 20rem;
+                border-radius: 15px 15px 0 0;
+            }
+
+            .icon {
+                position: absolute;
+                left: 0.3rem;
+                top: 10rem;
+                width: 3.5rem;
+                height: 3.5rem;
+                padding: 0.3rem;
+                border-radius: 15px;
+                background-color: $blue;
+            }
+
+            .underlay {
+                padding-top: 1.2rem;
+                padding-left: 0.6rem;
+
+                h2 {
+                    $size: 0.9rem;
+                    position: absolute;
+                    display: flex;
+                    justify-content: space-evenly;
+                    width: 100%;
+                    left: 0.6rem;
+                    bottom: 0.6rem;
+                    font-size: $size;
+                    .online {
+                        display: inline-block;
+                        position: relative;
+                        &::before {
+                            position: absolute;
+                            left:-$size - 0.1rem;
+                            top: 0.15rem;
+                            content: "";
+                            background-color: green;
+                            border-radius: 50%;
+                            width: $size - 0.2rem;
+                            height: $size - 0.2rem;
+                        }
+                    }
+                    .total {
+                        display: inline-block;
+                        position: relative;
+                        &::before {
+                            position: absolute;
+                            left: -$size - 0.1rem;
+                            top: 0.15rem;
+                            content: "";
+                            background-color: gray;
+                            border-radius: 50%;
+                            width: $size - 0.2rem;
+                            height: $size - 0.2rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
