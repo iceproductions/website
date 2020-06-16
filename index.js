@@ -164,14 +164,18 @@ async function fetchUserData(req, opts = {}) {
             resolveBodyOnly: true
         }).json();
     if (!user || (!guilds && !opts.ignoreGuilds)) {
-        console.log(!user ? "User missing" : (!guilds ? "Guilds missing" : ""));
         throw new Error("User not logged in");
     }
 
-    if(!opts.ignoreGuilds)
-        for(var guild of guilds) {
-            guild.permissions = convertPerms(guild.permissions);
+    if(!opts.ignoreGuilds) {
+        var ids = guilds.map(t => t.id);
+        var votes = await fetchPublicGuildsByArray(ids);
+
+        for(var guild in guilds) {
+            guilds[guild].permissions = convertPerms(guilds[guild].permissions);
+            guilds[guild].votes = votes.get(guilds[guild].id);
         }
+    }
     var returned = { user };
     if(!opts.ignoreGuilds) returned = {
         user,
@@ -211,14 +215,60 @@ app.get("/dashboard/:guild", async (req, res) => {
     });
 });
 
-async function fetchPublicGuild(id) {
-    var [guildVotes] = await pool.query("SELECT COUNT(v.id) AS votes FROM guilds as g LEFT JOIN votes AS v ON v.guild = g.snowflake WHERE g.public = true AND g.snowflake = ?", [id]);
-    guildVotes = guildVotes[0];
-    if(!guildVotes) throw new Error("Guild not found or not public");
+function mysql_escape_string (str) {
+    return str.replace(/[\0\x08\x09\x1a\n\r"'\\\%]/g, function (char) {
+        switch (char) {
+            case "\0":
+                return "\\0";
+            case "\x08":
+                return "\\b";
+            case "\x09":
+                return "\\t";
+            case "\x1a":
+                return "\\z";
+            case "\n":
+                return "\\n";
+            case "\r":
+                return "\\r";
+            case "\"":
+            case "'":
+            case "\\":
+            case "%":
+                return "\\"+char;
+            default:
+                return char;
+        }
+    });
+}
 
+async function fetchPublicGuild(id, onlyVotes) {
+    var [guildVotes] = await pool.query(`SELECT g.snowflake as id, COUNT(v.id) AS votes
+    FROM guilds as g LEFT JOIN votes AS v
+    ON v.guild = g.snowflake WHERE public = true AND g.snowflake = ? GROUP BY g.snowflake`, [id]);
+    guildVotes = guildVotes[0];
+
+    if(!guildVotes.public) throw new Error("Guild not found or not public");
+
+    if(onlyVotes) return guildVotes.votes;
     var guild = client.guilds.resolve(id);
     guild.votes = guildVotes.votes;
     return guild;
+}
+
+async function fetchPublicGuildsByArray(ids) {
+    ids = ids.map(i => "'" + mysql_escape_string(i) + "'");
+    ids = ids.join(",");
+    var [votes] = await pool.query(`SELECT g.public as public, g.snowflake as id, COUNT(v.id) AS votes
+    FROM guilds as g LEFT JOIN votes AS v
+    ON v.guild = g.snowflake
+    WHERE g.public = true
+AND g.snowflake IN (${ids})
+GROUP BY g.snowflake `);
+    var res = new Map();
+    for(var vote of votes) {
+        res.set(vote.id, vote.votes);
+    }
+    return res;
 }
 
 async function fetchPublicGuilds(offset, max) {
