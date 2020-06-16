@@ -114,10 +114,14 @@ app.get("/", async (req, res) => {
         }
         cache.set("users", users);
     }
+    var user;
+    try {
+        user = await oauth.getUser(req.cookies.token)
+    } catch(e) {} 
     res.render("index", {
         servers: client.guilds.cache.size,
         users: formatNumber(cache.get("users")),
-        user: await oauth.getUser(req.cookies.token)
+        user
     });
 });
 
