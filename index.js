@@ -251,9 +251,7 @@ async function userVoted(id, guild) {
 app.get("/list", async (req, res) => {
     try {
         var { user } = await fetchUserData(req, { ignoreGuilds: true });
-    } catch(e) {
-        return res.redirect("/login");
-    }
+    } catch(e) {}
 
     var guilds =  await fetchPublicGuilds(0, 10);
 
@@ -266,13 +264,15 @@ app.get("/list", async (req, res) => {
 app.get("/list/:guild", async (req, res) => {
     try {
         var { user, guilds } = await fetchUserData(req);
-    } catch(e) {
-        return res.redirect("/login");
-    }
+    } catch(e) {}
 
     const guild = await fetchPublicGuild(req.params.guild);
 
-    const userGuild = guilds.filter(g => g.id === guild.id);
+    if(guilds) {
+        var userGuild = guilds.filter(g => g.id === guild.id);
+    } else {
+        var userGuild = null;
+    }
 
     const voted = userVoted(user.id, guild.id);
         
