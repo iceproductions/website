@@ -288,16 +288,6 @@ async function fetchPublicGuilds(offset, max) {
     return guilds;
 }
 
-function fetchGuildAs(guild, token) {
-    return got("https://discord.com/api/users/@me/guilds/" + guild, {
-        headers: {
-            Authorization: "Bearer " + token
-        },
-        responseType: "json",
-        resolveBodyOnly: true
-    }).json();
-}
-
 async function userVoted(id, guild) {
     return await !!await pool.query("SELECT id FROM votes WHERE user = ? AND guild = ? AND date > NOW() - INTERVAL 12 HOUR", [id, guild])[0];
 }
@@ -307,7 +297,7 @@ app.get("/list", async (req, res) => {
         var { user } = await fetchUserData(req, { ignoreGuilds: true });
     } catch(e) {}
 
-    var guilds =  await fetchPublicGuilds(0, 10);
+    var guilds = await fetchPublicGuilds(0, 10);
 
     return res.render("list", {
         user,
