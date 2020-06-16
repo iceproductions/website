@@ -256,7 +256,6 @@ app.get("/list", async (req, res) => {
     }
 
     var guilds =  await fetchPublicGuilds(0, 10);
-    console.log(guilds);
 
     return res.render("list", {
         user,
@@ -284,6 +283,42 @@ app.get("/list/:guild", async (req, res) => {
         userGuild
     });
 });
+
+app.get("/user/:guild/:id", async (req, res) => {
+    try {
+        var { user, guilds } = await fetchUserData(req);
+    } catch(e) {
+        return res.redirect("/login");
+    }
+
+    const guild = await fetchPublicGuild(req.params.guild);
+
+    const userGuild = guilds.filter(g => g.id === guild.id);
+
+    if(!userGuild) {
+        return res.redirect("/list/" + guild.id);
+    }
+
+    const member = await guild.members.fetch(user.id);
+    if(!member.permissions.has("ADMINISTRATOR") && user.id != req.params.id) {
+        return res.redirect("/list/" + guild.id);
+    }
+    try {
+        var target = await client.users.fetch(req.params.id);
+    } catch(e) {
+        return res.redirect("/list/" + guild.id);
+    }
+    const targetMember = guild.member(target);
+
+    return res.render("list/user", {
+        user,
+        guild,
+        userGuild,
+        member,
+        target,
+        targetMember
+    });
+})
 
 app.listen(8080, () => {
     console.log("Listening at", "http://localhost:8080/");
