@@ -1,28 +1,90 @@
+<% 
+    function shortenNumberTo(number, to, suffix = "") {
+        if(number > to) {
+            return (Math.floor(number / (to / 10)) / 10) + suffix;
+        }
+    }
+    function shortenNumber(number) {
+        if(shortenNumberTo(number, 1e6)) return shortenNumberTo(number, 1e6, "m");
+        if(shortenNumberTo(number, 1e3)) return shortenNumberTo(number, 1e3, "k");
+        return number;
+    }
+%> 
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aztec server list</title>
+    <link rel="stylesheet" href="/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/css/list.css" type="text/css">
 </head>
 <body>
-    Public guilds:
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Member count</th>
-            <th>Votes</th>
-        </tr>
-        <% for(var guild of guilds) { %>
-            <tr>
-                <td><a href="/list/<%=guild.id %>"><%=guild.name %></a></td>
-                <td><%=guild.memberCount %></td>
-                <td><%=guild.votes %></td>
-            </tr>
-        <% } %>
-    </table>
-    <% if(!guilds) var guilds = []; %>
-    <% if(!guilds.length) { %>
-        Guild list isn't available
-    <% } %>
+    <nav id="desktop-nav">
+      <ul>
+        <div class="left">
+            <a href="/">
+                <li id="nav-item-logo"></li>
+            </a>
+            <li class="nav-item-d"><a href="#features">Features</a></li>
+            <li class="nav-item-d"><a href="#commands">Commands</a></li>
+            <li class="nav-item-d"><a href="#docs">Documentation</a></li>
+            <li class="nav-item-d"><a href="#premium">Premium</a></li>
+            <li class="nav-item-d"><a href="#contanct">Contact</a></li>
+        </div>
+        <div class="right"></div>
+      </ul>
+    </nav>
+  
+    <nav id="mobile-nav">
+        <div class="mobile-nav__header">
+            <svg id="hamburger-icon" class="hamburger-icon" data-name="hamburger-icon" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 44 44" width="44" height="44" fill="#fff">
+                <title>Hamburger button</title>
+                <rect id="hamburger-icon__top" y="8" x="6" width="32" height="4" />
+                <rect id="hamburger-icon__center" y="20" x="6" width="32" height="4" />
+                <rect id="hamburger-icon__bottom" y="32" x="6" width="32" height="4" />
+            </svg>
+        </div>
+    </nav>
+    
+    <section class="search">
+        <h1>Find your server</h1>
+        <input type="text" placeholder="Explore communities" class="text">
+    </section>
+
+    <section class="top-guilds">
+        <h1>Top voted guilds <small>of all time</small></h1>
+        <div class="scrollable">
+            <% for(var guild of guilds) { %>
+                <a href="/list/<%=guild.id %>">
+                    <div class="card">
+                        <img class="banner" src="https://gamexguide.com/wp-content/uploads/2020/04/1587800923_gsno2eie9ntss83kih-67q-760x469.jpeg">
+                        
+                        <% if(guild.icon) { %>
+                            <img class="icon" src="https://cdn.discordapp.com/icons/<%=guild.id; %>/<%=guild.icon; %>.png?size=4096">
+                        <% } else { %>
+                            <div class="icon text"><%=guild.name.split(" ").map(t => t.substr(0, 1)).slice(0, 1).join(""); %></div>
+                        <% } %>
+
+
+                        <div class="underlay">
+                            <h1 class="<%=(guild.id === '692837502117216307' ? 'verified' : '') %>">
+                                <%=guild.name %>
+                                <span class="votes">
+                                    <%=shortenNumber(guild.votes) %>
+                                </span>
+                            </h1>
+                            <p>Description will be here</p>
+                            <h2 class="bottom-info">
+                                <span class="online">? Online</span>
+                                <span class="total"><%=shortenNumber(guild.memberCount) %> Members</span>
+                            </h2>
+                        </div>
+                    </div>
+                </a>
+            <% } %>
+        </div>
+    </section>
 </body>
 </html>
